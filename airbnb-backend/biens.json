@@ -1,0 +1,43 @@
+[
+    {
+      "emailProprietaire": "lo@gmail.com",
+      "commune": "Paris",
+      "rue": "Rue de Rivoli",
+      "codePostal": "75001",
+      "nombreCouchages": 4,
+      "nombreChambres": 2,
+      "distanceCentreVille": 0.5,
+      "prix": 120,
+      "imageUrl": "https://unsplash.com/photos/WvP7bpgdkYM",
+      "avis": [],
+      "createdAt": { "$date": "2024-10-31T17:56:57.053Z" }
+    },
+    {
+      "emailProprietaire": "lo@gmail.com",
+      "commune": "Nice",
+      "rue": "Avenue des Fleurs",
+      "codePostal": "06000",
+      "nombreCouchages": 8,
+      "nombreChambres": 4,
+      "distanceCentreVille": 2,
+      "prix": 300,
+      "imageUrl": "https://unsplash.com/photos/gray-fabric-loveseat-near-brown-wooden-table-3wylDrjxH-E",
+      "avis": [],
+      "createdAt": { "$date": "2024-10-31T17:56:57.053Z" }
+    },
+    {
+      "emailProprietaire": "lo@gmail.com",
+      "commune": "Chamonix",
+      "rue": "Route du Soleil",
+      "codePostal": "74400",
+      "nombreCouchages": 6,
+      "nombreChambres": 3,
+      "distanceCentreVille": 1,
+      "prix": 180,
+      "imageUrl": "https://unsplash.com/photos/a-balcony-with-a-table-chairs-and-a-couch-WvP7bpgdkYM",
+      "avis": [],
+      "createdAt": { "$date": "2024-10-31T17:56:57.053Z" }
+    }
+    
+  ]
+  
