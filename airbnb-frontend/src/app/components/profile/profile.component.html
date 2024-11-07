@@ -1,0 +1,21 @@
+<!-- src/app/components/profile/profile.component.html -->
+
+<div class="profile-container">
+  <h1>Profile Utilisateur</h1>
+
+  <div *ngIf="!user && !error">
+    <p>Chargement du profile...</p>
+  </div>
+
+  <div *ngIf="error" class="error">
+    {{ error }}
+  </div>
+
+  <div *ngIf="user">
+    <p><strong>ID :</strong> {{ user._id}}</p>
+    <p><strong>Email :</strong> {{ user.email }}</p>
+    <p><strong>Prénom :</strong> {{ user.prenom }}</p>
+    <p><strong>Nom :</strong> {{ user.nom }}</p>
+    <p><strong>Rôle :</strong> {{ user.role }}</p>
+  </div>
+</div>

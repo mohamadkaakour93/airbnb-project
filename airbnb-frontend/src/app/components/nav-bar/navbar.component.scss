@@ -1,0 +1,102 @@
+/* Styles généraux de la navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background-color: #fff;
+  /* Autres styles si nécessaire */
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #FF5A5F;
+  text-decoration: none;
+}
+
+/* Styles pour le menu */
+.navbar-menu {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-menu li {
+  display: inline-block;
+}
+
+.navbar-menu a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Styles pour les éléments à droite */
+.navbar-profile {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.profile-icon {
+  display: flex;
+  align-items: center;
+}
+
+.profile-icon i {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.nav-text {
+  margin-left: 0.5rem;
+  font-weight: 500;
+  color: #333;
+}
+
+/* Styles pour le menu déroulant */
+.profile-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.5rem);
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  z-index: 1000;
+  min-width: 150px;
+}
+
+.profile-menu a {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: #333;
+  text-decoration: none;
+}
+
+.profile-menu a:hover {
+  background-color: #f0f0f0;
+}
+
+.profile-menu {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+
+.profile-menu.open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+

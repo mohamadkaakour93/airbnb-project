@@ -1,0 +1,38 @@
+<div class="search-bar">
+    <form (ngSubmit)="onSearch()">
+      <div class="search-field">
+        <label for="location">Lieu</label>
+        <input
+          type="text"
+          id="location"
+          [(ngModel)]="filters.location"
+          name="location"
+          placeholder="Où allez-vous ?"
+        />
+      </div>
+  
+      <div class="search-field">
+        <label for="dateDebut">Date d'arrivée</label>
+        <input
+          type="date"
+          id="dateDebut"
+          [(ngModel)]="filters.dateDebut"
+          name="dateDebut"
+        />
+      </div>
+  
+      <div class="search-field">
+        <label for="dateFin">Date de départ</label>
+        <input
+          type="date"
+          id="dateFin"
+          [(ngModel)]="filters.dateFin"
+          name="dateFin"
+        />
+      </div>
+  
+      <!-- Icône de recherche -->
+      <i class="fas fa-search search-icon" (click)="onSearch()"></i>
+    </form>
+  </div>
+  

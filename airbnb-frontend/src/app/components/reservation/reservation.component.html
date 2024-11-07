@@ -1,0 +1,37 @@
+<!-- src/app/components/reservation/reservation.component.html -->
+
+<div class="container">
+    <h1>Réserver le bien : {{ bien?.commune }} - {{ bien?.rue }}</h1>
+  
+    <div *ngIf="errorMessage" class="error">
+      {{ errorMessage }}
+    </div>
+  
+    <div *ngIf="bien">
+      <!-- Formulaire de sélection des dates -->
+      <form (ngSubmit)="submitReservation()">
+        <div>
+          <label for="dateDebut">Date de début :</label>
+          <input
+            type="date"
+            id="dateDebut"
+            [(ngModel)]="dateDebut"
+            name="dateDebut"
+            required
+          />
+        </div>
+        <div>
+          <label for="dateFin">Date de fin :</label>
+          <input
+            type="date"
+            id="dateFin"
+            [(ngModel)]="dateFin"
+            name="dateFin"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-success">Réserver</button>
+      </form>
+    </div>
+  </div>
+  

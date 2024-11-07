@@ -1,0 +1,51 @@
+<!-- src/app/components/gestion-reservations/gestion-reservations.component.html -->
+
+<div class="gestion-reservations-container">
+  <h2>Gestion des Réservations</h2>
+
+  <div *ngIf="isLoading">
+    <p>Chargement des réservations...</p>
+  </div>
+
+  <div *ngIf="errorMessage" class="error">
+    {{ errorMessage }}
+  </div>
+
+  <table *ngIf="!isLoading && reservations.length > 0" class="table">
+    <thead>
+      <tr>
+        <th>Bien</th>
+        <th>Utilisateur</th>
+        <th>Dates</th>
+        <th>Statut</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let reservation of reservations">
+        <td>
+          {{ reservation.bien.commune }} - {{ reservation.bien.rue }}
+          <ng-container *ngIf="!reservation.bien">
+            <span class="text-danger">Bien non trouvé</span>
+          </ng-container>
+        </td>
+        <td>{{ reservation.utilisateur.prenom }} {{ reservation.utilisateur.nom }}</td>
+        <td>{{ reservation.dateDebut | date:'dd/MM/yyyy' }} - {{ reservation.dateFin | date:'dd/MM/yyyy' }}</td>
+        <td>{{ reservation.statut }}</td>
+        <td>
+          <button *ngIf="reservation.statut === 'en attente'" (click)="accepter(reservation._id)" class="btn btn-success">
+            Accepter
+          </button>
+          <button *ngIf="reservation.statut === 'en attente'" (click)="annuler(reservation._id)" class="btn btn-danger">
+            Annuler
+          </button>
+          <span *ngIf="reservation.statut !== 'en attente'">{{ reservation.statut }}</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!isLoading && reservations.length === 0">
+    <p>Aucune réservation à gérer.</p>
+  </div>
+</div>

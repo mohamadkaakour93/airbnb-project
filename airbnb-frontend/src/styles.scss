@@ -1,0 +1,119 @@
+
+
+/* Importer la police de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #F7F7F7;
+  margin: 0;
+  padding: 0;
+  color: #484848;
+}
+
+/* Classes Utilitaires */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.error {
+  background-color: #ffebe8;
+  color: #e74c3c;
+  padding: 10px 20px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.success {
+  background-color: #e8f5e9;
+  color: #27ae60;
+  padding: 10px 20px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+button.primary {
+  background-color: #FF5A5F;
+  color: #fff;
+}
+
+button.primary:hover {
+  background-color: #e04848;
+}
+
+button.secondary {
+  background-color: #767676;
+  color: #fff;
+}
+
+button.secondary:hover {
+  background-color: #5a5a5a;
+}
+
+a {
+  text-decoration: none;
+  color: #FF5A5F;
+  font-weight: 600;
+}
+
+a:hover {
+  color: #e04848;
+}
+
+/* Ajouter aux styles existants */
+
+.bien-card {
+    /* ... styles existants ... */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+  }
+  
+  .btn-primary, .btn-secondary {
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  
+  
+
+
+/* Ajouter des Media Queries poour les mobiles*/
+
+@media (max-width: 768px) {
+    .bien-content {
+      flex-direction: column;
+    }
+  
+    .bien-image img {
+      max-width: 100%;
+    }
+  
+    .bien-details, .bien-info {
+      padding: 10px;
+    }
+  
+    .btn-primary, .btn-secondary {
+      width: 100%;
+      text-align: center;
+    }
+  }
+  

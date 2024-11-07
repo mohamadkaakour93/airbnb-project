@@ -1,0 +1,42 @@
+<!-- src/app/components/property-list/property-list.component.html -->
+<div class="container">
+  <!-- En-tête avec le titre et le bouton "Ajouter un Bien" -->
+  <div class="header">
+    <h1>Liste des Biens</h1>
+    <button *ngIf="isLoueur" (click)="addBien()" class="btn-success">
+      Ajouter un Bien
+    </button>
+  </div>
+
+  <!-- Message d'erreur -->
+  <div *ngIf="errorMessage" class="error">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Aucun bien disponible -->
+  <div *ngIf="biens.length === 0 && !errorMessage">
+    <p>Aucun bien disponible.</p>
+  </div>
+
+  <!-- Grille des biens -->
+  <app-search-bar (search)="applyFilters($event)"></app-search-bar>
+  <div class="biens-grid">
+    <div *ngFor="let bien of biens" class="bien-card">
+      <div class="bien-image">
+        <!-- Assurez-vous que chaque bien possède une propriété 'imageUrl' -->
+        <img [src]="bien.imageUrl || 'assets/default-property.jpg'" alt="Image de {{ bien.commune }}">
+      </div>
+      <div class="bien-details">
+        <h2>{{ bien.commune }}</h2>
+        <p class="code-postal">{{ bien.codePostal }}</p>
+        <p class="prix">{{ bien.prix }} €/nuit</p>
+        <div class="actions">
+          <button (click)="viewBien(bien._id)" class="btn-primary">Voir</button>
+          <button *ngIf="!isLoueur" (click)="reserveBien(bien._id)" class="btn-secondary">Reserver</button>
+        </div>
+          <button *ngIf="isLoueur" (click)="editBien(bien._id)" class="btn-secondary">Modifier</button>
+
+        </div>
+      </div>
+    </div>
+  </div>

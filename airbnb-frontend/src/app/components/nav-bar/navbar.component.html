@@ -1,0 +1,28 @@
+<nav class="navbar">
+  <div class="container navbar-container">
+    <a [routerLink]="['/']" class="navbar-brand">Mon Airbnb</a>
+    <ul class="navbar-menu">
+      <li><a [routerLink]="['/biens']"><i class="fas fa-home"></i> Biens</a></li>
+     <!---- <li><a [routerLink]="['/biens/add']"><i class="fas fa-plus-circle"></i> Ajouter un Bien</a></li> -->
+    </ul>
+    <div class="navbar-profile" (click)="toggleMenu()">
+      <div class="profile-icon">
+        <i class="fas fa-user-circle"></i>
+        <span *ngIf="authService.isAuthenticated()" class="nav-text">{{ authService.getUserName() }}</span>
+      </div>
+      <div class="profile-menu" [ngClass]="{'open': menuOpen}">
+        <ng-container *ngIf="authService.isAuthenticated(); else guestLinks">
+          <a [routerLink]="['/profile']">Profile</a>
+          <a (click)="logout()">Déconnexion</a>
+          <a routerLink="/dashboard" *ngIf="userService.isUser()">Mon Tableau de Bord</a>
+          <a routerLink="/gestion-reservations" *ngIf="userService.isLoueur()">Gerer les reservations</a>
+         
+        </ng-container>
+        <ng-template #guestLinks>
+          <a [routerLink]="['/login']">Connexion</a>
+          <a [routerLink]="['/signup']">Inscription</a>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</nav>

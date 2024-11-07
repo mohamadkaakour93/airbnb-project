@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="auth-form">
+      <h1>Connexion</h1>
+      <form #loginForm="ngForm" (ngSubmit)="login(loginForm)" novalidate>
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">Email :</label>
+          <input
+            type="email"
+            id="email"
+            required
+            [(ngModel)]="credentials.email"
+            name="email"
+            #emailCtrl="ngModel"
+          />
+          <div *ngIf="emailCtrl.invalid && emailCtrl.touched" class="error">
+            L'email est requis.
+          </div>
+        </div>
+  
+        <!-- Mot de passe -->
+        <div class="form-group">
+          <label for="password">Mot de passe :</label>
+          <input
+            type="password"
+            id="password"
+            required
+            [(ngModel)]="credentials.password"
+            name="password"
+            #passwordCtrl="ngModel"
+          />
+          <div *ngIf="passwordCtrl.invalid && passwordCtrl.touched" class="error">
+            Le mot de passe est requis.
+          </div>
+        </div>
+  
+        <!-- Bouton de soumission -->
+        <div class="form-actions">
+          <button type="submit" class="btn-primary">Se connecter</button>
+        </div>
+      </form>
+  
+      <!-- Messages d'erreur et de succès -->
+      <div *ngIf="errorMessage" class="error">
+        {{ errorMessage }}
+      </div>
+      <div *ngIf="successMessage" class="success">
+        {{ successMessage }}
+      </div>
+  
+      <!-- Lien vers la page d'inscription -->
+      <p class="auth-link">
+        Pas encore de compte ? <a [routerLink]="['/signup']">Inscrivez-vous ici</a>
+      </p>
+    </div>
+  </div>
+  

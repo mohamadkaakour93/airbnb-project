@@ -1,0 +1,83 @@
+<!-- src/app/components/property-detail/property-detail.component.html -->
+
+<div class="container" *ngIf="bien; else loadingOrError">
+  <h1>{{ bien.commune }}</h1>
+  <div class="bien-image">
+    <img [src]="bien.imageUrl" alt="Image de {{ bien.commune }}">
+  </div>
+  <p><strong>ID:</strong>{{ bien._id }}</p>
+  <p><strong>Adresse:</strong> {{ bien.rue }}, {{ bien.codePostal }}</p>
+  <p><strong>Prix:</strong> {{ bien.prix }} €/nuit</p>
+  <p><strong>Nombre de Couchages:</strong> {{ bien.nombreCouchages }}</p>
+  <p><strong>Nombre de Chambres:</strong> {{ bien.nombreChambres }}</p>
+  <p><strong>Distance du Centre Ville:</strong> {{ bien.distanceCentreVille }} km</p>
+  <!-- Ajoutez d'autres détails selon votre modèle -->
+
+  <h2>Avis</h2>
+  <div *ngIf="bien.avis && bien.avis.length > 0">
+    <div *ngFor="let avis of bien.avis" class="avis-item">
+      <p><strong>Note:</strong> {{ avis.note }}/5</p>
+      <p><strong>Commentaire:</strong> {{ avis.commentaire }}</p>
+      <p><strong>Date:</strong> {{ avis.date | date:'dd/MM/yyyy' }}</p>
+      <p *ngIf="avis.utilisateur"><strong>utilisateur:</strong> {{ avis.utilisateur}}</p>
+      <hr>
+    </div>
+  </div>
+  <div *ngIf="!bien.avis || bien.avis.length === 0">
+    <p>Aucun avis pour le moment.</p>
+  </div>
+
+  <!-- Formulaire pour ajouter un avis, visible seulement pour les utilisateurs -->
+  <div *ngIf="userService.isUser()" class="avis-form">
+    <h3>Laisser un Avis</h3>
+    <form #Form="ngForm" (ngSubmit)="submitAvis()" novalidate>
+      <div class="form-group">
+        <label for="note">Note:</label>
+        <input
+          id="note"
+          type="number"
+          name="note"
+          [(ngModel)]="avisForm.note"
+          min="1"
+          max="5"
+          required
+        />
+        <div
+          *ngIf="Form.controls['note']?.invalid && Form.controls['note']?.touched"
+          class="error"
+        >
+          La note doit être entre 1 et 5.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="commentaire">Commentaire:</label>
+        <textarea
+          id="commentaire"
+          name="commentaire"
+          [(ngModel)]="avisForm.commentaire"
+          required
+        ></textarea>
+        <div
+          *ngIf="Form.controls['commentaire']?.invalid && Form.controls['commentaire']?.touched"
+          class="error"
+        >
+          Le commentaire est requis.
+        </div>
+      </div>
+
+      <button type="submit" class="btn-primary" [disabled]="Form.invalid">
+        Envoyer
+      </button>
+    </form>
+  </div>
+</div>
+
+<ng-template #loadingOrError>
+  <div *ngIf="errorMessage" class="error">
+    {{ errorMessage }}
+  </div>
+  <div *ngIf="!errorMessage">
+    Chargement...
+  </div>
+</ng-template>

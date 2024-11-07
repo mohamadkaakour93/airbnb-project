@@ -1,0 +1,25 @@
+<div class="container">
+  <h1>Mes Réservations</h1>
+
+  <div *ngIf="errorMessage" class="error">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="reservations.length === 0 && !errorMessage">
+    <p>Vous n'avez aucune réservation pour le moment.</p>
+  </div>
+
+  <div class="reservations-list">
+    <div *ngFor="let reservation of reservations" class="reservation-card">
+     <h2>
+        {{ reservation.bien.commune || 'Commune inconnue' }}
+        {{ reservation.bien.rue || 'Rue inconnue' }}
+      </h2>
+      <p>
+        Du {{ reservation.dateDebut | date: 'dd/MM/yyyy' }}
+        au {{ reservation.dateFin | date: 'dd/MM/yyyy' }}
+      </p>
+      <p><strong>Statut :</strong> {{ reservation.statut }}</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,178 @@
+<!-- src/app/components/add-property/add-property.component.html -->
+
+<div class="container">
+  <div class="header">
+    <h1>Ajouter un Nouveau Bien</h1>
+    <button type="button" class="btn-secondary" (click)="cancel()">Annuler</button>
+  </div>
+
+  <form #bienForm="ngForm" (ngSubmit)="saveBien(bienForm)" novalidate>
+    <!--<div class="form-group">
+      <label for="idBien">ID Bien :</label>
+      <input
+        type="text"
+        id="idBien"
+        required
+        [(ngModel)]="bienCreation.idBien"
+        name="idBien"
+        #idBien="ngModel"
+      />
+      <div *ngIf="idBien.invalid && idBien.touched" class="error">
+        ID Bien est requis.
+      </div>
+    </div>-->
+
+    <div class="form-group">
+      <label for="emailProprietaire">Email Propriétaire :</label>
+      <input
+        type="email"
+        id="emailProprietaire"
+        required
+        [(ngModel)]="bienCreation.emailProprietaire"
+        name="emailProprietaire"
+        #emailProprietaire="ngModel"
+      />
+      <div *ngIf="emailProprietaire.invalid && emailProprietaire.touched" class="error">
+        Email Propriétaire est requis et doit être valide.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="commune">Commune :</label>
+      <input
+        type="text"
+        id="commune"
+        required
+        [(ngModel)]="bienCreation.commune"
+        name="commune"
+        #commune="ngModel"
+      />
+      <div *ngIf="commune.invalid && commune.touched" class="error">
+        Commune est requise.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="rue">Rue :</label>
+      <input
+        type="text"
+        id="rue"
+        required
+        [(ngModel)]="bienCreation.rue"
+        name="rue"
+        #rue="ngModel"
+      />
+      <div *ngIf="rue.invalid && rue.touched" class="error">
+        Rue est requise.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="codePostal">Code Postal :</label>
+      <input
+        type="text"
+        id="codePostal"
+        required
+        [(ngModel)]="bienCreation.codePostal"
+        name="codePostal"
+        #codePostal="ngModel"
+      />
+      <div *ngIf="codePostal.invalid && codePostal.touched" class="error">
+        Code Postal est requis.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="nombreCouchages">Nombre de Couchages :</label>
+      <input
+        type="number"
+        id="nombreCouchages"
+        required
+        [(ngModel)]="bienCreation.nombreCouchages"
+        name="nombreCouchages"
+        #nombreCouchages="ngModel"
+        min="1"
+      />
+      <div *ngIf="nombreCouchages.invalid && nombreCouchages.touched" class="error">
+        Nombre de Couchages doit être au moins 1.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="nombreChambres">Nombre de Chambres :</label>
+      <input
+        type="number"
+        id="nombreChambres"
+        required
+        [(ngModel)]="bienCreation.nombreChambres"
+        name="nombreChambres"
+        #nombreChambres="ngModel"
+        min="1"
+      />
+      <div *ngIf="nombreChambres.invalid && nombreChambres.touched" class="error">
+        Nombre de Chambres doit être au moins 1.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="distanceCentreVille">Distance du Centre Ville (km) :</label>
+      <input
+        type="number"
+        id="distanceCentreVille"
+        required
+        [(ngModel)]="bienCreation.distanceCentreVille"
+        name="distanceCentreVille"
+        #distanceCentreVille="ngModel"
+        min="0"
+      />
+      <div *ngIf="distanceCentreVille.invalid && distanceCentreVille.touched" class="error">
+        Distance doit être positive.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="prix">Prix (€/nuit) :</label>
+      <input
+        type="number"
+        id="prix"
+        required
+        [(ngModel)]="bienCreation.prix"
+        name="prix"
+        #prix="ngModel"
+        min="0"
+      />
+      <div *ngIf="prix.invalid && prix.touched" class="error">
+        Prix doit être positif.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="imageUrl">URL de l'Image :</label>
+      <input
+        type="url"
+        id="imageUrl"
+        required
+        [(ngModel)]="bienCreation.imageUrl"
+        name="imageUrl"
+        #imageUrl="ngModel"
+      />
+      <div *ngIf="imageUrl.invalid && imageUrl.touched" class="error">
+        URL de l'Image est requise et doit être valide.
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn-primary" [disabled]="bienForm.invalid">Ajouter</button>
+      <button type="button" class="btn-secondary" (click)="cancel()">Annuler</button>
+    </div>
+  </form>
+
+  <!-- Messages d'Erreur et de Succès -->
+  <div *ngIf="errorMessage" class="error">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="successMessage" class="success">
+    {{ successMessage }}
+  </div>
+</div>

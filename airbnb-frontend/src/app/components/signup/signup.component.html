@@ -1,0 +1,121 @@
+<div class="container">
+    <div class="auth-form">
+      <h1>Inscription</h1>
+      <form #signupForm="ngForm" (ngSubmit)="signup(signupForm)" novalidate>
+        <!-- Prénom -->
+        <div class="form-group">
+          <label for="prenom">Prénom :</label>
+          <input
+            type="text"
+            id="prenom"
+            required
+            [(ngModel)]="user.prenom"
+            name="prenom"
+            #prenomCtrl="ngModel"
+          />
+          <div *ngIf="prenomCtrl.invalid && prenomCtrl.touched" class="error">
+            Le prénom est requis.
+          </div>
+        </div>
+  
+        <!-- Nom -->
+        <div class="form-group">
+          <label for="nom">Nom :</label>
+          <input
+            type="text"
+            id="nom"
+            required
+            [(ngModel)]="user.nom"
+            name="nom"
+            #nomCtrl="ngModel"
+          />
+          <div *ngIf="nomCtrl.invalid && nomCtrl.touched" class="error">
+            Le nom est requis.
+          </div>
+        </div>
+  
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">Email :</label>
+          <input
+            type="email"
+            id="email"
+            required
+            [(ngModel)]="user.email"
+            name="email"
+            #emailCtrl="ngModel"
+          />
+          <div *ngIf="emailCtrl.invalid && emailCtrl.touched" class="error">
+            L'email est requis.
+          </div>
+        </div>
+  
+        <!-- Téléphone -->
+        <div class="form-group">
+          <label for="telephone">Téléphone :</label>
+          <input
+            type="text"
+            id="telephone"
+            required
+            [(ngModel)]="user.telephone"
+            name="telephone"
+            #telephoneCtrl="ngModel"
+          />
+          <div *ngIf="telephoneCtrl.invalid && telephoneCtrl.touched" class="error">
+            Le téléphone est requis.
+          </div>
+        </div>
+  
+        <!-- Mot de passe -->
+        <div class="form-group">
+          <label for="password">Mot de passe :</label>
+          <input
+            type="password"
+            id="password"
+            required
+            [(ngModel)]="user.password"
+            name="password"
+            #passwordCtrl="ngModel"
+          />
+          <div *ngIf="passwordCtrl.invalid && passwordCtrl.touched" class="error">
+            Le mot de passe est requis.
+          </div>
+        </div>
+  
+        <!-- Confirmation du mot de passe -->
+        <div class="form-group">
+          <label for="confirmPassword">Confirmer le mot de passe :</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            required
+            [(ngModel)]="confirmPassword"
+            name="confirmPassword"
+            #confirmPasswordCtrl="ngModel"
+          />
+          <div *ngIf="user.password !== confirmPassword && confirmPasswordCtrl.touched" class="error">
+            Les mots de passe ne correspondent pas.
+          </div>
+        </div>
+  
+        <!-- Bouton de soumission -->
+        <div class="form-actions">
+          <button type="submit" class="btn-primary">S'inscrire</button>
+        </div>
+      </form>
+  
+      <!-- Messages d'erreur et de succès -->
+      <div *ngIf="errorMessage" class="error">
+        {{ errorMessage }}
+      </div>
+      <div *ngIf="successMessage" class="success">
+        {{ successMessage }}
+      </div>
+  
+      <!-- Lien vers la page de connexion -->
+      <p class="auth-link">
+        Déjà un compte ? <a [routerLink]="['/login']">Connectez-vous ici</a>
+      </p>
+    </div>
+  </div>
+  

@@ -1,0 +1,58 @@
+/* src/app/components/user-dashboard/user-dashboard.component.scss */
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+  
+    h1, h2 {
+      color: #FF5A5F;
+      font-weight: 600;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+  
+    .error {
+      color: #FF5A5F;
+      background-color: #FFE6E6;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: 500;
+    }
+  
+    p {
+      font-size: 16px;
+      color: #484848;
+      text-align: center;
+    }
+  
+    .reservations-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+  
+      .reservation-card {
+        background-color: #FFFFFF;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  
+        h2 {
+          color: #484848;
+          font-size: 20px;
+          margin-bottom: 10px;
+          font-weight: 600;
+        }
+  
+        p {
+          color: #828282;
+          font-size: 16px;
+          margin-bottom: 5px;
+        }
+      }
+    }
+  }
+  

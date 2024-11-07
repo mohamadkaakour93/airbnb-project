@@ -1,0 +1,212 @@
+
+
+.container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #F7F7F7;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+
+    h1 {
+      color: #FF5A5F; /* Rouge Airbnb */
+      font-weight: 600;
+      font-size: 32px;
+      margin: 0;
+    }
+
+    .btn-success {
+      color: #F0F0F0;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: 500;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: #FF5A5F;
+
+      &:hover {
+        background-color: darken(#FF5A5F, 10%);
+        transform: translateY(-2px);
+      }
+
+      &:disabled {
+        background-color: lighten(#FF5A5F, 40%);
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  .error {
+    color: #FF5A5F;
+    background-color: #FFE6E6;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 500;
+  }
+
+  p {
+    font-size: 16px;
+    color: #484848;
+    text-align: center;
+  }
+
+  .biens-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+  }
+
+  .bien-card {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .bien-image {
+      width: 100%;
+      height: 180px;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+
+    .bien-details {
+      padding: 15px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      h2 {
+        color: #484848;
+        font-size: 20px;
+        margin: 0 0 10px 0;
+        font-weight: 600;
+      }
+
+      .code-postal {
+        color: #828282;
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+
+      .prix {
+        color: #FF5A5F;
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 15px;
+      }
+
+      .actions {
+        display: flex;
+        gap: 10px;
+
+      
+        button {
+          flex: 1;
+          padding: 10px;
+          border: none;
+          border-radius: 8px;
+          font-size: 14px;
+          cursor: pointer;
+          transition: background-color 0.3s ease, transform 0.2s ease;
+
+          &.btn-primary {
+            background-color: #FF5A5F;
+            color: #FFFFFF;
+
+            &:hover {
+              background-color: #E04E51;
+              transform: translateY(-2px);
+            }
+          }
+
+          &.btn-secondary {
+            background-color: #FF5A5F;
+            color: #fff;
+
+            &:hover {
+              background-color: #E04E51;
+              transform: translateY(-2px);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .container {
+      margin: 20px;
+      padding: 0 15px;
+
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+
+        h1 {
+          font-size: 28px;
+          margin-bottom: 10px;
+        }
+
+        .btn-success {
+          width: 100%;
+          text-align: center;
+          padding: 10px;
+          font-size: 14px;
+        }
+      }
+
+      .biens-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 20px;
+      }
+
+      .bien-card {
+        .bien-details {
+          h2 {
+            font-size: 18px;
+          }
+
+          .prix {
+            font-size: 16px;
+          }
+
+          .actions {
+            button {
+              font-size: 12px;
+              padding: 8px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
